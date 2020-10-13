@@ -1,12 +1,11 @@
 import api from '../config/axios';
-import authHeader from './auth.header';
 
 const getAll = () => {
-    return api.get("api/user" + 'admin', { headers: authHeader() });
+    return api.get("api/user");
 };
 
 const get = id => {
-    return api.get(`api/user/${id}` + 'user', { headers: authHeader() })
+    return api.get(`api/user/${id}`)
 };
 
 const create = data => {

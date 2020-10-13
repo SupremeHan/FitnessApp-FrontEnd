@@ -9,11 +9,16 @@ const get = id => {
 };
 
 const create = data => {
-    return api.put("api/article");
+    return api.post("api/article", data);
+};
+
+const edit = (id, data) => {
+    return api.patch(`api/article/${id}`, data);
 };
 
 export default {
     getAll,
     get,
-    create
+    create,
+    edit
 }

@@ -21,7 +21,7 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
@@ -70,10 +70,10 @@ export default function VerticalTabs() {
                 aria-label="Vertical tabs example"
                 className={classes.tabs}
             >
-                <Tab label="Item One" {...a11yProps(0)} />
-                <Tab label="Item Two" {...a11yProps(1)} />
-                <Tab label="Item Three" {...a11yProps(2)} />
-                <Tab label="Item Four" {...a11yProps(3)} />
+                <Tab label="Workouts" {...a11yProps(0)} />
+                <Tab label="Profile" {...a11yProps(1)} />
+                <Tab label="Meal Plan" {...a11yProps(2)} />
+                <Tab label="Stats" {...a11yProps(3)} />
 
             </Tabs>
             <TabPanel value={value} index={0}>
@@ -83,7 +83,7 @@ export default function VerticalTabs() {
                 <UserProfile />
             </TabPanel>
             <TabPanel value={value} index={2}>
-                Item Three
+                Coming soon...
       </TabPanel>
             <TabPanel value={value} index={3}>
                 Item Four

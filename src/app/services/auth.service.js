@@ -8,12 +8,15 @@ const userLogin = data => {
     return api.post('auth/user/login', data)
         .then((res) => {
             console.log(res.data.token)
-            if (res.data.token) {
+            if (res.data) {
                 localStorage.setItem('user', JSON.stringify(res.data))
             }
 
             return res.data;
         })
+        .catch(e => (
+            console.log(e)
+        ))
 };
 
 const logout = () => {

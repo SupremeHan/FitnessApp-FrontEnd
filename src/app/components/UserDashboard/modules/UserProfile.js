@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { UserService } from '../../../services';
-
 
 const UserProfile = () => {
-    const [user, setUser] = useState({ email: '', id: 0 });
-    useEffect(() => {
-        var a = localStorage.getItem('myData')
+    const [user, setUser] = useState({ identity: '', userId: 0 });
+
+    const getLocalData = () => {
+        var a = localStorage.getItem('user')
         setUser(a)
-        console.log(user.id)
+        console.log(a)
+    }
+
+    useEffect(() => {
+        getLocalData()
     })
 
     return (
         <div>
-            h1
+            {user.identity}
         </div>
     )
 }

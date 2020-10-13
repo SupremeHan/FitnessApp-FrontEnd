@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
 function AdminArticle() {
 
     const initalArticleState = {
+        id: null,
         title: '',
         description: '',
     }
@@ -53,9 +54,9 @@ function AdminArticle() {
             title: article.title,
             description: article.description
         };
-
+        console.log(data)
         ArticleService.create(data).then(res => {
-            console.log(data)
+            console.log(res.data.title)
             setArticle({
                 title: res.data.title,
                 description: res.data.description
@@ -91,6 +92,9 @@ function AdminArticle() {
                         <th>Title</th>
                         <th>Description</th>
                         <th>Photo</th>
+                        <th><button type="button" onClick={handleOpen}>
+                            Add article
+                                </button></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -98,9 +102,7 @@ function AdminArticle() {
                         <tr key={item.articleId}>
                             <td>{item.title}</td>
                             <td>{item.description}</td>
-                            <td><button type="button" onClick={handleOpen}>
-                                Add article
-                                </button>
+                            <td>
                             </td>
                         </tr>
                     ))}
