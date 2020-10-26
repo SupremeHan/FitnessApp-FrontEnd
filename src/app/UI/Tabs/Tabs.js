@@ -1,38 +1,10 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
-import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import UserWorkout from '../../components/UserDashboard/modules/UserWorkout';
-import UserProfile from '../../components/UserDashboard/modules/UserProfile';
+import PropTypes from 'prop-types';
+import { Box } from '@material-ui/core';
 
-function TabPanel(props) {
-    const { children, value, index, ...other } = props;
-
-    return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`vertical-tabpanel-${index}`}
-            aria-labelledby={`vertical-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box p={3}>
-                    {children}
-                </Box>
-            )}
-        </div>
-    );
-}
-
-TabPanel.propTypes = {
-    children: PropTypes.node,
-    index: PropTypes.any.isRequired,
-    value: PropTypes.any.isRequired,
-};
 
 function a11yProps(index) {
     return {
@@ -50,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     },
     tabs: {
         borderRight: `1px solid ${theme.palette.divider}`,
+        width:"100%"
     },
 }));
 
@@ -76,18 +49,7 @@ export default function VerticalTabs() {
                 <Tab label="Stats" {...a11yProps(3)} />
 
             </Tabs>
-            <TabPanel value={value} index={0}>
-                <UserWorkout />
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                <UserProfile />
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                Coming soon...
-      </TabPanel>
-            <TabPanel value={value} index={3}>
-                Item Four
-      </TabPanel>
+            
         </div>
     );
 }

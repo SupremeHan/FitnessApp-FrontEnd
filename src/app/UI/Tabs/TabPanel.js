@@ -1,8 +1,8 @@
 import React from 'react';
+import { Box, makeStyles } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
 
-function TabPanel(props) {
+export default function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
     return (
@@ -15,12 +15,13 @@ function TabPanel(props) {
         >
             {value === index && (
                 <Box p={3}>
-                    <Typography>{children}</Typography>
+                    {children}
                 </Box>
             )}
         </div>
     );
 }
+
 TabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.any.isRequired,

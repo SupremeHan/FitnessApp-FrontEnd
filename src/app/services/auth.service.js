@@ -1,3 +1,5 @@
+import React from 'react';
+import { Redirect } from 'react-router-dom';
 import api from '../config/axios';
 
 const adminLogin = data => {
@@ -7,9 +9,10 @@ const adminLogin = data => {
 const userLogin = data => {
     return api.post('auth/user/login', data)
         .then((res) => {
-            console.log(res.data.token)
-            if (res.data) {
+            if (res.status > '200' || res.status < '400') {
                 localStorage.setItem('user', JSON.stringify(res.data))
+            }else {
+                console.log("Gresska")
             }
 
             return res.data;
@@ -18,6 +21,7 @@ const userLogin = data => {
             console.log(e)
         ))
 };
+
 
 const logout = () => {
     localStorage.removeItem('user');
