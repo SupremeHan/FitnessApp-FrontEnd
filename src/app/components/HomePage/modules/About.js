@@ -8,11 +8,11 @@ const useStyles = makeStyles((theme) => ({
         marginBottom: '80px'
     },
     aboutImg: {
-        width:"80%",
+        width:"100%",
         objectFit: 'contain'
     },
     aboutInfo: {
-        width: "400px",
+        paddingRight: '50px',
         textAlign: 'left'
     },
     aboutTitle: {
@@ -28,8 +28,8 @@ const useStyles = makeStyles((theme) => ({
     },
     aboutInfoTitle2: {
         position: 'absolute',
-        top: "40%",
-        right: "30%",
+        top: "25%",
+        right: "20%",
         color: 'white'
     }
 }));
@@ -47,11 +47,11 @@ const About = () => {
             </Typography>
             </div>
             <Grid container className={classes.root}>
-                <Grid container item xs={4} className={classes.aboutInfo}>
-                    <Typography variant="h3">
+                <Grid container xs={12} sm={4} className={classes.aboutInfo}>
+                    <Typography variant="h1">
                     ADOPTING A <br/>GROWTH <br/>MINDSET.
                     </Typography>
-                    <Typography variant="p">
+                    <Typography variant="h6">
                     CompTrain is for people who understand that mental 
                     toughness is the key to performing at an elite level, 
                     and are committed to getting better at it. Whether your 
@@ -61,7 +61,7 @@ const About = () => {
                     CompTrain is for you.
                     </Typography>
                 </Grid>
-                <Grid container item xs={4} className={classes.aboutInfoImg}>
+                <Grid container item xs={12} sm={4} className={classes.aboutInfoImg}>
                     <img 
                     src={process.env.PUBLIC_URL + "/assets/katrin.jpg"} 
                     alt="slika" 
@@ -72,7 +72,7 @@ const About = () => {
             <div className={classes.aboutInfo2}>
                 <img src={process.env.PUBLIC_URL + "/assets/sara.jpg"} alt="slika"  className={classes.aboutInfoImg2}/>
                 <Typography 
-                variant="h3"
+                variant="h1"
                 className={classes.aboutInfoTitle2}
                 >
                     MENTAL <br/>TOUGHNESS<br/> IS BUILT<br/> ON BAD DAYS

@@ -3,29 +3,21 @@ import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
     footer: {
-        justifyContent: 'center',
-        backgroundColor: 'gray'
+        padding: '30px 0px',
+        justifyContent: 'center'
     },
-    footerLeft: {
+    footerLogo: {
         flexDirection: 'column',
-        justifyContent: 'center',
-        [theme.breakpoints.down("xs")]: {
-            justifyContent: 'center'
-        }
-    },
-    footerRight: {
-        [theme.breakpoints.down("xs")]: {
-            justifyContent: 'center'
-        },
-    },
+    }
 
 }));
 
 const Footer = () => {
     const classes = useStyles();
     return(
+    
         <Grid container className={classes.footer}>
-            <Grid container item sm={3} xs={12} className={classes.footerRight}>
+            <Grid container item sm={2} xs={12} className={classes.footerCompany}>
                 <div>
                     <Typography variant="h6">COMPANY</Typography>
                     <ul>
@@ -36,7 +28,10 @@ const Footer = () => {
                         <li>CONTACT</li>
                     </ul>
                 </div>
-                <div>
+                
+            </Grid>
+            <Grid container item sm={2} xs={12} className={classes.footerTrain}>
+            <div>
                     <Typography variant="h6">TRAIN</Typography>
                     <ul>
                         <li>TODAY'S WOD</li>
@@ -45,7 +40,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </Grid>
-            <Grid container item sm={3} xs={12} className={classes.footerLeft}>
+            <Grid container item sm={2} xs={12} className={classes.footerLogo}>
                 <Typography variant="h3">Logo</Typography>
                 <Typography variant="h4">Social</Typography>
                 <Typography variant="p">
@@ -53,6 +48,7 @@ const Footer = () => {
                 </Typography>
             </Grid>
         </Grid>
+        
     )
 }
 

@@ -29,7 +29,7 @@ const Article = () => {
 
     const classes = useStyles();
     const [data, setData] = useState([]);
-    const photo = "http://localhost:3000/assets/photos/";
+    const photo = "http://localhost:5000/assets/photos/";
 
 
     useEffect(() => {

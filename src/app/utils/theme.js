@@ -1,26 +1,10 @@
 
 const FONT_FAMILY = {
     primary: [
-        'Lora',
-        'Georgia',
         "PT Serif",
-        "Palatino Linotype",
-        "Book Antiqua",
-        'Palatino',
-        'serif'
     ].join(','),
     secondary: [
-        'Rubik',
         'Helvetica',
-        '"Helvetica Neue"',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        'Arial',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
         'sans-serif',
     ].join(','),
     tertiary: [
@@ -80,9 +64,6 @@ const BREAKPOINTS = {
 
 export default {
     palette: PALETTE,
-    shape: {
-        borderRadius: 10,
-    },
     breakpoints: BREAKPOINTS,
     typography: {
         fontFamily: FONT_FAMILY.secondary,
@@ -95,21 +76,21 @@ export default {
         h1: {
             fontFamily: FONT_FAMILY.primary,
             fontWeight: 700,
-            fontSize: 30,
+            fontSize: 60,
             lineHeight: 1.25,
             color: PALETTE.text.primary,
         },
         h2: {
             fontFamily: FONT_FAMILY.secondary,
             fontWeight: 300,
-            fontSize: 22,
+            fontSize: 52,
             lineHeight: 1.55,
             color: PALETTE.text.primary,
         },
         h3: {
             fontFamily: FONT_FAMILY.primary,
             fontWeight: 700,
-            fontSize: 26,
+            fontSize: 42,
             lineHeight: 1.25,
             color: PALETTE.text.primary,
         },
@@ -137,7 +118,7 @@ export default {
         body1: {
             fontFamily: FONT_FAMILY.secondary,
             fontWeight: 400,
-            fontSize: 13,
+            fontSize: 23,
             lineHeight: 1.55,
             color: PALETTE.text.primary,
         },
@@ -253,4 +234,6 @@ export default {
             width: (240 + 70),
         },
     },
+
+
 };

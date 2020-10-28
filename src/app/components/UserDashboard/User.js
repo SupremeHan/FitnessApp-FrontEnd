@@ -1,11 +1,13 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
-import { Tab, Tabs, Box, AppBar } from '@material-ui/core';
+import { Tab, Tabs, Box, AppBar, Button } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 import PropTypes from 'prop-types';
 import UserWorkout from '../UserDashboard/modules/UserWorkout';
 import UserProfile from '../UserDashboard/modules/UserProfile';
 import UserStats from './modules/UserStats';
+import { Link } from 'react-router-dom';
+import authService from '../../services/auth.service';
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -42,6 +44,17 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
       },
+    header: {
+      display: 'flex',
+      height: '50px',
+      backgroundColor: theme.palette.primary,
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      
+    },
+    headerBtn: {
+      marginRight: '20px'
+    }
 }));
 
 
@@ -59,6 +72,14 @@ function User() {
     };
     return (
         <div className={classes.root}>
+        <div className={classes.header}>
+          <Button
+            className={classes.headerBtn}
+            onClick={() => (authService.logout())}
+          >
+            <Link to='/'>Logout</Link>
+          </Button>
+        </div>
       <AppBar position="static" color="default">
         <Tabs
           value={value}

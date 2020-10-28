@@ -1,4 +1,5 @@
-import { Button, Grid, makeStyles, TextField, Typography } from '@material-ui/core';
+import { Grid, makeStyles, TextField, Typography } from '@material-ui/core';
+import { Button } from '../../../UI/Button';
 import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -11,12 +12,7 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         justifyContent: 'center',
         width:'70%'
-    },
-    formBtn: {
-        width: "100px",
-        margin: '10px 0px',
-        
-    },
+    },   
     formTitle: {
         alignItems: 'center'
     }
@@ -34,12 +30,7 @@ const Contact = () => {
                     <TextField id="standard-basic" label="First Name" />
                     <TextField id="standard-basic" label="Last Name" />
                     <TextField id="standard-basic" label="Email" />
-                    <Button 
-                variant="outlined"
-                color="primary"
-                size="medium"
-                className={classes.formBtn}
-                >
+                <Button>
                     Subscribe
                 </Button>
                 </Grid>

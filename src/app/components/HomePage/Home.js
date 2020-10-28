@@ -1,14 +1,18 @@
-import React, { useState } from 'react';
-import Navbar from './modules/Navbar';
+import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Button, Typography } from '@material-ui/core';
+import { Typography, useMediaQuery } from '@material-ui/core';
 import About from './modules/About';
 import Footer from './modules/Footer';
-import { Burger, Menu } from '../Sidebar/index';
 import { useHistory } from 'react-router-dom';
+import SideBarDrawer from '../AppBar/AppBar';
+import { Button } from '../../UI/Button/'
+import theme from '../../utils/theme';
+
+
 const useStyles = makeStyles((theme) => ({
     root: {
-        overflowX: 'hidden'
+        overflowX: 'hidden',
+        
     },
     img: {
         width: "300px"
@@ -27,44 +31,35 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         top: "200px",
         left: "15%",
-        color: "white"
+        color: "white",
     },
-    btn: {
-        width:'150px',
-        marginTop: '20px'
-    }
+    
 }));
 
 
 function Home() {
     const classes = useStyles();
-    const [open, setOpen] = useState(false);
     let history = useHistory();
 
     function handleClick() {
-        history.push('/auth/user/login')
+        history.push('/login')
     }
 
     return (
         <div className={classes.root}>
+            <SideBarDrawer/>
             <div>
-                <Burger open={open} setOpen={setOpen}/>
-                <Menu open={open} setOpen={setOpen}/>
                 <img src={process.env.PUBLIC_URL + "/assets/josh.jpg"} alt="slika"  className={classes.landingImg}/>
                 <div  className={classes.landingH2}>
-                <Typography variant='h2'>
+                <Typography 
+                variant='h2'
+                >
                     PUSH HARDER<br />REACH HIGHER <br/> TRAIN SMARTER
                 </Typography>
-                <Typography variant="p" className={classes.p}>
+                <Typography variant="body1">
                     Get Daily WOD's in our App Now!
                 </Typography>
-                <Button 
-                variant="contained"
-                color="primary"
-                size="large"
-                onClick={handleClick}
-                className={classes.btn}
-                >
+                <Button>
                     Join Here
                 </Button>
                 </div>

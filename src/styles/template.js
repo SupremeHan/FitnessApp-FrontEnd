@@ -67,11 +67,11 @@ const template = theme => ({
     },
 
     h2: {
-        fontSize: '24px',
+        fontSize: '34px',
     },
 
     h3: {
-        fontSize: '21px',
+        fontSize: '25px',
     },
 
     h4: {
