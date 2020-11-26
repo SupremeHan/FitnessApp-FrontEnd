@@ -15,8 +15,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MyButton(props) {
     const classes = useStyles();
-    const { children } = props;
+    const { children, path} = props;
     const text = '';
+
     return(
         <div className={classes.root}>
             <Button 

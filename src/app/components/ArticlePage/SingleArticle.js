@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArticleService } from '../../../services';
+import { ArticleService } from '../../services';
 
 const SingleArticle = (props) => {
 

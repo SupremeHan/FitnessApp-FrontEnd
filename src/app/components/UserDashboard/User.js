@@ -49,11 +49,24 @@ const useStyles = makeStyles((theme) => ({
       height: '50px',
       backgroundColor: theme.palette.primary,
       alignItems: 'center',
-      justifyContent: 'flex-end',
-      
+      justifyContent: 'space-between'
+    },
+    headerTitle: {
+      marginLeft: '20px'
     },
     headerBtn: {
-      marginRight: '20px'
+      marginRight: '20px',
+      
+    },
+    link: {
+      color: '#eb5e28',
+      border: '2px solid black',
+      borderRadius: '5%',
+      padding: '5px 7px',
+       ':hover': {
+         color: 'black',
+          border: '2px solid #eb5e28',
+       }
     }
 }));
 
@@ -67,18 +80,21 @@ function User() {
         setValue(newValue);
     };
 
-    const handleChangeIndex = (index) => {
-        setValue(index);
-    };
     return (
         <div className={classes.root}>
         <div className={classes.header}>
-          <Button
-            className={classes.headerBtn}
-            onClick={() => (authService.logout())}
-          >
-            <Link to='/'>Logout</Link>
-          </Button>
+          <div className={classes.headerTitle}>
+            <Typography variant="h5">Dashboard</Typography>
+          </div>
+          <div className={classes.headerBtn}>
+            <Button
+              className={classes.headerBtn}
+              onClick={() => (authService.logout())}
+            >
+              <Link to='/' className={classes.link}>Logout</Link>
+            </Button>
+          </div>
+          
         </div>
       <AppBar position="static" color="default">
         <Tabs

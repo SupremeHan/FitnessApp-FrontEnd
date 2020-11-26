@@ -1,6 +1,5 @@
 const FONT_FAMILY = {
     primary: [
-        'Lora',
         'Merriweather',
         'Lora',
         'Georgia',
@@ -71,7 +70,7 @@ const template = theme => ({
     },
 
     h3: {
-        fontSize: '25px',
+        fontSize: '2px',
     },
 
     h4: {
@@ -96,7 +95,7 @@ const template = theme => ({
         boxSizing: 'content-box',
         height: '1px',
         overflow: 'visible',
-        background: '#eee',
+        background: '#191919',
         width: '100%',
         margin: '25px 0',
     },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -15,11 +15,12 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
-const drawerWidth = 240;
+const drawerWidth = '100%';
 
 const useStyles = makeStyles(theme => ({
     root: {
         display: 'flex',
+        
       },
       appBar: {
         zIndex: theme.zIndex.drawer + 1,
@@ -34,7 +35,8 @@ const useStyles = makeStyles(theme => ({
       },
       toolbar: theme.mixins.toolbar,
       drawerPaper: {
-        width: drawerWidth
+        width: drawerWidth,
+        backgroundColor: "#eb5e28" 
       },
       content: {
         flexGrow: 1,
@@ -44,30 +46,58 @@ const useStyles = makeStyles(theme => ({
         marginRight: 'auto',
         marginLeft: 0,
       },
+      active: {
+        backgroundColor: 'gray'
+      },
+      listItemText: {
+        fontSize: '3rem',
+        paddingLeft: '20px',
+        [theme.breakpoints.down('sm')]: {
+          fontSize: '2rem'
+        },
+        fontFamily: 'Teko'
+      },
+      listItem: {
+        width: '100%'
+      }
 }));
 
 function SideBarDrawer() {
     const dummyCategories = [
         {path: '/', title: 'Home'},
         {path: '/article', title: 'Article'},
+        {path: '/login', title: 'Login'}
     ];
     const classes = useStyles();
     const theme = useTheme();
     const [mobileOpen, setMobileOpen] = React.useState(false);
+    const [navbar, setNavbar] = useState(false);
 
     function handleDrawerToggle() {
     setMobileOpen(!mobileOpen)
   }
 
+  const changeBackground = () => {
+    if(window.scrollY >= 100) {
+      setNavbar(true)
+    } else {
+      setNavbar(false)
+    }
+  }
+
+  window.addEventListener('scroll', changeBackground)
+
   const drawer = (
     <div>
       <List>
         {dummyCategories.map((text, index) => (
-          <ListItem button key={text}>
-              <Link to={text.path}>
-            <ListItemText primary={text.title} />
-             </Link>
+          <Link to={text.path}>
+          <ListItem button key={index} className={classes.listItem}>
+              
+            <ListItemText classes={{primary:classes.listItemText}} primary={text.title} />
+             
           </ListItem>
+          </Link>
         ))}
       </List>
     </div>
@@ -108,7 +138,7 @@ function SideBarDrawer() {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <IconButton onClick={handleDrawerToggle} className={classes.closeMenuButton}>
+            <IconButton fontSize="large" onClick={handleDrawerToggle} className={classes.closeMenuButton}>
               <CloseIcon/>
             </IconButton>
             {drawer}

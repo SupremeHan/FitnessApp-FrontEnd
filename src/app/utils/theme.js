@@ -1,10 +1,26 @@
 
 const FONT_FAMILY = {
     primary: [
+        'Teko',
+        'Georgia',
         "PT Serif",
+        "Palatino Linotype",
+        "Book Antiqua",
+        'Palatino',
+        'serif'
     ].join(','),
     secondary: [
+        'Rubik',
         'Helvetica',
+        '"Helvetica Neue"',
+        '-apple-system',
+        'BlinkMacSystemFont',
+        '"Segoe UI"',
+        'Roboto',
+        'Arial',
+        '"Apple Color Emoji"',
+        '"Segoe UI Emoji"',
+        '"Segoe UI Symbol"',
         'sans-serif',
     ].join(','),
     tertiary: [
@@ -20,10 +36,10 @@ const FONT_FAMILY = {
 
 const PALETTE = {
     primary: {
-        main: '#304ffe',
+        main: '#252422',
     },
     secondary: {
-        main: '#69f0ae',
+        main: '#eb5e28',
     },
     error: {
         main: '#D63815',
@@ -39,7 +55,7 @@ const PALETTE = {
     },
     text: {
         primary: '#191919',
-        secondary: '#898989',
+        secondary: '#eb5e28',
         disabled: '#D8D8D8',
         hint: '#D8D8D8'
     },
@@ -79,6 +95,9 @@ export default {
             fontSize: 60,
             lineHeight: 1.25,
             color: PALETTE.text.primary,
+            '@media (max-width:600px)': {
+                fontSize: '50px',
+              },
         },
         h2: {
             fontFamily: FONT_FAMILY.secondary,
@@ -86,6 +105,9 @@ export default {
             fontSize: 52,
             lineHeight: 1.55,
             color: PALETTE.text.primary,
+            '@media (max-width:600px)': {
+                fontSize: '22px',
+              },
         },
         h3: {
             fontFamily: FONT_FAMILY.primary,
@@ -93,6 +115,9 @@ export default {
             fontSize: 42,
             lineHeight: 1.25,
             color: PALETTE.text.primary,
+            '@media (max-width:1200px)': {
+                fontSize: '32px',
+              },
         },
         h4: {
             fontFamily: FONT_FAMILY.primary,
@@ -118,9 +143,12 @@ export default {
         body1: {
             fontFamily: FONT_FAMILY.secondary,
             fontWeight: 400,
-            fontSize: 23,
+            fontSize: 16,
             lineHeight: 1.55,
             color: PALETTE.text.primary,
+            '@media (max-width:600px)': {
+                fontSize: '16px',
+              },
         },
         body2: {
             fontFamily: FONT_FAMILY.secondary,
@@ -165,6 +193,8 @@ export default {
             fontSize: 14,
             lineHeight: 1.25,
         },
+        
+        
 
         // Label
         subtitle1: {
@@ -181,12 +211,18 @@ export default {
             fontSize: 15,
             lineHeight: 1.55,
         },
+        
     },
+
+    
 
     overrides: {
         MuiInputBase: {
             root: {
-                fontSize: '0.85rem',
+                fontSize: '.85rem',
+                '@media (max-width:600px)': {
+                    fontSize: '1.3rem',
+              },
             },
         },
         MuiFormLabel: {

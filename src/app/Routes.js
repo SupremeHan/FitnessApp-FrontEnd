@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Switch } from "react-router-dom";
 import UserLogin from './components/Auth/UserLogin';
 import Home from './components/HomePage/Home';
-import Article from './components/ArticlePage/modules/Article';
+import Article from './components/ArticlePage/Article';
 import User from './components/UserDashboard/User';
 
 const Routes = () => (

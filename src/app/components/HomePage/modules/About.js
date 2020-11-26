@@ -5,7 +5,7 @@ import Contact from './Contact';
 const useStyles = makeStyles((theme) => ({
     root: {
         justifyContent: "center",
-        marginBottom: '80px'
+        marginBottom: '40px'
     },
     aboutImg: {
         width:"100%",
@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
     },
     aboutInfo: {
         paddingRight: '50px',
-        textAlign: 'left'
+        textAlign: 'left',
+        padding: '20px 20px'
     },
     aboutTitle: {
         margin: '60px 0px'
@@ -29,8 +30,9 @@ const useStyles = makeStyles((theme) => ({
     aboutInfoTitle2: {
         position: 'absolute',
         top: "25%",
-        right: "20%",
-        color: 'white'
+        right: "15%",
+        color: 'white',
+        marginLeft: '30px'
     }
 }));
 
@@ -39,19 +41,19 @@ const About = () => {
     return(
         <div>
             <div className={classes.aboutTitle}>
-            <Typography variant="h5" align="center">
+            <Typography variant="h4" align="center">
                 About us
             </Typography>
-            <Typography variant="h2" align="center">
+            <Typography variant="h1" align="center">
                 Train Different
             </Typography>
             </div>
             <Grid container className={classes.root}>
-                <Grid container xs={12} sm={4} className={classes.aboutInfo}>
-                    <Typography variant="h1">
-                    ADOPTING A <br/>GROWTH <br/>MINDSET.
+                <Grid container item xs={12} md={4} className={classes.aboutInfo}>
+                    <Typography variant="h1" >
+                    ADOPTING A <br/>GROWTH <br/>MINDSET
                     </Typography>
-                    <Typography variant="h6">
+                    <Typography variant="body1">
                     CompTrain is for people who understand that mental 
                     toughness is the key to performing at an elite level, 
                     and are committed to getting better at it. Whether your 
@@ -61,7 +63,7 @@ const About = () => {
                     CompTrain is for you.
                     </Typography>
                 </Grid>
-                <Grid container item xs={12} sm={4} className={classes.aboutInfoImg}>
+                <Grid container item xs={12} md={4} className={classes.aboutInfoImg}>
                     <img 
                     src={process.env.PUBLIC_URL + "/assets/katrin.jpg"} 
                     alt="slika" 
@@ -69,6 +71,7 @@ const About = () => {
                     />
                 </Grid>
             </Grid>
+            <Contact/>
             <div className={classes.aboutInfo2}>
                 <img src={process.env.PUBLIC_URL + "/assets/sara.jpg"} alt="slika"  className={classes.aboutInfoImg2}/>
                 <Typography 
@@ -78,7 +81,7 @@ const About = () => {
                     MENTAL <br/>TOUGHNESS<br/> IS BUILT<br/> ON BAD DAYS
                 </Typography>
             </div>
-            <Contact/>
+            
         </div>
     );
 }

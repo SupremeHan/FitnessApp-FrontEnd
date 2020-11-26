@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Typography, useMediaQuery } from '@material-ui/core';
 import About from './modules/About';
 import Footer from './modules/Footer';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import SideBarDrawer from '../AppBar/AppBar';
 import { Button } from '../../UI/Button/'
 import theme from '../../utils/theme';
@@ -12,7 +12,6 @@ import theme from '../../utils/theme';
 const useStyles = makeStyles((theme) => ({
     root: {
         overflowX: 'hidden',
-        
     },
     img: {
         width: "300px"
@@ -30,10 +29,21 @@ const useStyles = makeStyles((theme) => ({
         display:'flex',
         flexDirection: 'column',
         top: "200px",
-        left: "15%",
-        color: "white",
+        left: "15%",   
+       
     },
-    
+    link: {
+        color: '#191919',
+        '&:hover': {
+            color: '#eb5e28',
+            
+        }
+    },
+    btnLink : {
+        ':hover': {
+            backgoroundColor: '#191919',
+        }
+    }
 }));
 
 
@@ -42,6 +52,7 @@ function Home() {
     let history = useHistory();
 
     function handleClick() {
+        console.log(1232)
         history.push('/login')
     }
 
@@ -52,15 +63,17 @@ function Home() {
                 <img src={process.env.PUBLIC_URL + "/assets/josh.jpg"} alt="slika"  className={classes.landingImg}/>
                 <div  className={classes.landingH2}>
                 <Typography 
-                variant='h2'
+                variant='h1'
                 >
                     PUSH HARDER<br />REACH HIGHER <br/> TRAIN SMARTER
                 </Typography>
                 <Typography variant="body1">
                     Get Daily WOD's in our App Now!
                 </Typography>
-                <Button>
-                    Join Here
+                <Button
+                className={classes.btnLink}
+                >
+                    <Link to='/login' className={classes.link}> Join Here</Link> 
                 </Button>
                 </div>
             </div>

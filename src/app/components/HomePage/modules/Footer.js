@@ -3,13 +3,12 @@ import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
     footer: {
-        padding: '30px 0px',
+        padding: '20px 0px',
         justifyContent: 'center'
     },
-    footerLogo: {
-        flexDirection: 'column',
+    ul: {
+        margin: '15px 20px'
     }
-
 }));
 
 const Footer = () => {
@@ -17,35 +16,40 @@ const Footer = () => {
     return(
     
         <Grid container className={classes.footer}>
-            <Grid container item sm={2} xs={12} className={classes.footerCompany}>
+            <Grid container item sm={2} xs={12} className={classes.footerList}>
                 <div>
-                    <Typography variant="h6">COMPANY</Typography>
-                    <ul>
-                        <li>ABOUT</li>
-                        <li>PRICING</li>
-                        <li>FAQ</li>
-                        <li>TERMS & <br/> CONDITIONS</li>
-                        <li>CONTACT</li>
+                    
+                    <ul className={classes.ul}>
+                        <li><Typography variant="h6">COMPANY</Typography></li>
+                        <li><Typography variant="body2">ABOUT</Typography></li>
+                        <li><Typography variant="body2">PRICING</Typography></li>
+                        <li><Typography variant="body2">FAQ</Typography></li>
+                        <li><Typography variant="body2">TERMS & <br/> CONDITIONS</Typography></li>
+                        <li><Typography variant="body2">CONTACT</Typography></li>
                     </ul>
                 </div>
                 
             </Grid>
-            <Grid container item sm={2} xs={12} className={classes.footerTrain}>
+            <Grid container item sm={2} xs={12} className={classes.footerList}>
             <div>
-                    <Typography variant="h6">TRAIN</Typography>
-                    <ul>
-                        <li>TODAY'S WOD</li>
-                        <li>AT-HOME WORKOUT</li>
-                        <li>SIGN UP FOR PRO</li>
+                    <ul className={classes.ul}>
+                        <li><Typography variant="h6">TRAIN</Typography></li>
+                        <li> <Typography variant="body2">TODAY'S WOD</Typography></li>
+                        <li> <Typography variant="body2">AT-HOME WORKOUT</Typography></li>
+                        <li> <Typography variant="body2">SIGN UP FOR PRO</Typography></li>
                     </ul>
                 </div>
             </Grid>
-            <Grid container item sm={2} xs={12} className={classes.footerLogo}>
-                <Typography variant="h3">Logo</Typography>
-                <Typography variant="h4">Social</Typography>
-                <Typography variant="p">
-                © COMPANY 2020. ALL RIGHTS RESERVED
-                </Typography>
+            <Grid container item sm={2} xs={12} className={classes.footerList}>
+                    <ul className={classes.ul}>
+                        <li><Typography variant="h3">Logo</Typography></li>
+                        <li><Typography variant="h4">Social</Typography></li>
+                        <li>
+                            <Typography variant="body2">
+                            © COMPANY 2020. ALL RIGHTS RESERVED
+                            </Typography>
+                        </li>
+                    </ul>
             </Grid>
         </Grid>
         
