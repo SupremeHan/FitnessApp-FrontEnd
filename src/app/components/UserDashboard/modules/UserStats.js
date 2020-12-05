@@ -1,8 +1,6 @@
-import { Button, Card, CardActions, CardContent, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { Button, Card,  CardActions, CardContent, Fade, Grid, makeStyles, Modal, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
-import { StatsService } from '../../../services';
 import benchmarkService from '../../../services/benchmark.service';
-import workoutService from '../../../services/workout.service';
 
 const useStyles = makeStyles((theme) => ({
   statsInfo: {
@@ -14,60 +12,77 @@ const useStyles = makeStyles((theme) => ({
   stats: {
       gap: '1rem',
       justifyContent: 'center'
-  }
+  },
+  card: {
+      border: '1px solid #000',
+  },
+  cardContent: {
+      color: '#eb5e28'
+  },
+  nameInput: {
+      width: '120px',
+      fontSize: '20px'
+  },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    },
+    btns: {
+        justifyContent: 'flex-end'
+    }
 }));
 
 const UserStats = () => {
+
     const classes = useStyles();
     const [benchmark, setBenchmark] = useState([]);
+    const [open, setOpen] = React.useState(false);
+
 
     const getBenchmark = () => {
         const a = JSON.parse(localStorage.getItem('user'));
-        console.log(a.id)
         benchmarkService.getBenchmark(a.id).then(res => {
-            console.log(res.data)
             setBenchmark(res.data)
             
         })
     }
 
-    const getWorkouts = () => {
-        console.log(benchmark)
-        workoutService.getAll().then(res=>(console.log(res.data)));
-    }
-
     useEffect(() => {
-        getBenchmark()
+        getBenchmark();
     }, []);
 
+    const deleteBenchmark = (id) => {
+        console.log(id)
+        setBenchmark(benchmark.filter((item) => item.benchmarkId !== id))
+    }
 
 const workouts = () => {
     return(
         
-             <Grid container className={classes.stats}>
+            <Grid container className={classes.stats}>
+               
                {benchmark.map(item => (
-                <Grid item xs={12} sm={3}>
-                    <Card>
-                        <CardContent>
-                            <Typography>
+                <Grid item xs={12} sm={5} md={3}>
+                    <Card className={classes.card}>    
+                        <CardContent >
+                            <Typography className={classes.cardContent}>
                                 Workout of the day
                             </Typography>
                             <Typography variant="h3">
                                 {item.name}
                             </Typography>
-                            <Typography>
-                                Time completed: {item.timeCompleted} min
+                            <Typography variant="h6">
+                              Time Completed: {item.timeCompleted} min
                             </Typography>
                         </CardContent>
-                        <CardActions>
-                            <Button size="small">Update</Button>
+                        <CardActions className={classes.btns}>
+                
+                            <Button size="small" onClick={() => deleteBenchmark(item.benchmarkId)}>Remove</Button>
                         </CardActions>
                     </Card>
                 </Grid>
                ))}
-                
-
-                
             </Grid>
         
     )

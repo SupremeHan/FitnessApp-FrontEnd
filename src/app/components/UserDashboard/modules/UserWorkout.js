@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { WorkoutService } from '../../../services';
-import { Button, Fade, FormControl, Backdrop, Grid, Input, InputAdornment, InputLabel, makeStyles, MenuItem, Modal, Select, TextField, Typography, IconButton } from '@material-ui/core';
+import { Button, Fade, FormControl, Backdrop, Grid, InputAdornment, InputLabel, makeStyles, MenuItem, Modal, Select, TextField, Typography, Card, CardContent, CardActions } from '@material-ui/core';
 import ReactPlayer from 'react-player';
 import benchmarkService from '../../../services/benchmark.service';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
@@ -9,7 +9,6 @@ import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 const useStyles = makeStyles((theme) => ({
     workout: {
         justifyContent: 'center',
-        
     },
     workoutInfo: {
         flexDirection: 'column',
@@ -18,11 +17,18 @@ const useStyles = makeStyles((theme) => ({
         marginTop: '10px',
         marginBottom: '20px'
     },
-    workoutItem: {
-        margin: '10px 0px',
-        [theme.breakpoints.down('sm')]: {
-            fontSize: '22px'
-        }
+    workoutName: {
+        fontSize: '36px',
+        marginBottom: '10px'
+    },
+    workoutWod: {
+        marginBottom: '10px'
+    },
+    workoutDuration: {
+        marginBottom: '10px'
+    },
+    workoutType: {
+        marginBottom: '10px'
     },
     form: {
         display: 'flex',
@@ -30,7 +36,8 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.down('xs')]: {
             flexDirection: 'column',
             alignItems: 'flex-start'
-        }
+        },
+        marginBottom: '30px'
     },
     input: {
         width: '150px',
@@ -47,12 +54,6 @@ const useStyles = makeStyles((theme) => ({
         marginRight: '30px',
         width: '150px'
     },
-    itemRow: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly'
-    },
-
     modal: {
     display: 'flex',
     alignItems: 'center',
@@ -66,14 +67,29 @@ const useStyles = makeStyles((theme) => ({
       display: 'flex',
       flexDirection: 'column'
     },
-    btnOut: {
-        position: 'fixed',
-        bottom: '14px',
-        right: '20px'
-    },
     btnAdd: {
         marginTop: '10px',
         color: '#eb5e28'
+    },
+    cards: {
+        marginBottom: '20px',
+        width: '400px',
+        [theme.breakpoints.down('sm')]: {
+            width: '100%'
+        }
+    },
+    cardsBtn: {
+        display: 'flex',
+        flexDirection: 'row-reverse',
+    },
+    items: {
+        display: 'flex',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column'
+        }
+    },
+    video: {
+        marginBottom: '20px'
     }
 }));
 
@@ -248,59 +264,105 @@ const UserWorkout = () => {
                     </Button>
                     </div>
                 </form>
-                 <div className={classes.btnOut}>
-                    <Button 
-                        className={classes.btnIn} 
-                        type="button" 
-                        size="large"
-                        color="secondary"
-                        onClick={handleOpen}
-                        endIcon={<FitnessCenterIcon/>}
-                    >
-                         Workout
-                    </Button>
-                 </div>
                        
-                {filter == false ?
+                {filter === false ?
                 <>
                  
                  {workout.map(item => (
+                <div className={classes.itemWrapper}>
+                    <hr/>
                     <div className={classes.items}>
-                        <hr/>
-                        <Typography align="center" variant="h2" className={classes.workoutItem}><strong>{item.name}</strong></Typography>
-                        <Typography align="center" variant="body1" className={classes.workoutItem}><strong>Training</strong><br/> {item.wod}</Typography>
-                        <div className={classes.itemRow}>
-                            <Typography variant="body1" className={classes.workoutItem}><strong>Duration</strong><br/> {item.duration}min</Typography>
-                            <Typography variant="body1" className={classes.workoutItem}><strong>Type</strong><br/> {item.type}</Typography>
-                        </div>
+                        
+                        <Card className={classes.cards}>
+                        <CardContent>
+                           <Typography  variant="h2" className={classes.workoutName}>
+                            <strong>
+                                {item.name}
+                            </strong>
+                        </Typography>
+            
+                            <Typography  variant="body1" className={classes.workoutWod}>
+                                <strong>Training</strong><br/> {item.wod}
+                            </Typography>
+                        
+                            <Typography variant="body1" className={classes.workoutDuration}>
+                                <strong>Duration</strong><br/> {item.duration}min
+                            </Typography>
+                            <Typography variant="body1" className={classes.workoutType}>
+                                <strong>Type</strong><br/> {item.type}
+                            </Typography>
+                        </CardContent>
+                        <CardActions className={classes.cardsBtn}>
+                            <Button 
+                                className={classes.btnIn} 
+                                type="button" 
+                                size="large"
+                                color="secondary"
+                                onClick={handleOpen}
+                                endIcon={<FitnessCenterIcon/>}
+                            >
+                                 Workout
+                            </Button>
+                        </CardActions>
+                    </Card>
+                        
+                        
                         
                         <ReactPlayer
                             width="100%"
-                            height="400px"
+                            height="350px"
                             url={item.videoLink}
+                            className={classes.video}
                         />
 
                     </div>
+                </div>
                     ))}
                 </>
                  :
                  <>
                     {training.map(item => (
-                        <div className={classes.items}>
-                            <hr/>
-                            <Typography align="center" variant="h2" className={classes.workoutItem}><strong>{item.name}</strong></Typography>
-                            <Typography align="center" variant="body1" className={classes.workoutItem}><strong>Training</strong><br/> {item.wod}</Typography>
-                            <div className={classes.itemRow}>
-                                <Typography variant="body1" className={classes.workoutItem}><strong>Duration</strong><br/> {item.duration}min</Typography>
-                                <Typography variant="body1" className={classes.workoutItem}><strong>Type</strong><br/> {item.type}</Typography>
-                            </div>
-
-                            <ReactPlayer
-                                width="100%"
-                                height="400px"
-                                url={item.videoLink}
-                            />
-                        </div>
+                      <div className={classes.items}>
+                        
+                        <Card className={classes.cards}>
+                        <CardContent>
+                           <Typography  variant="h2" className={classes.workoutName}>
+                            <strong>
+                                {item.name}
+                            </strong>
+                        </Typography>
+            
+                            <Typography  variant="body1" className={classes.workoutWod}>
+                                <strong>Training</strong><br/> {item.wod}
+                            </Typography>
+                        
+                            <Typography variant="body1" className={classes.workoutDuration}>
+                                <strong>Duration</strong><br/> {item.duration}min
+                            </Typography>
+                            <Typography variant="body1" className={classes.workoutType}>
+                                <strong>Type</strong><br/> {item.type}
+                            </Typography>
+                        </CardContent>
+                        <CardActions className={classes.cardsBtn}>
+                            <Button 
+                                className={classes.btnIn} 
+                                type="button" 
+                                size="large"
+                                color="secondary"
+                                onClick={handleOpen}
+                                endIcon={<FitnessCenterIcon/>}
+                            >
+                                 Workout
+                            </Button>
+                        </CardActions>
+                    </Card>
+                        <ReactPlayer
+                            width="100%"
+                            height="350px"
+                            url={item.videoLink}
+                            className={classes.video}
+                        />
+                    </div>
                     ))}
                      </>
                  }

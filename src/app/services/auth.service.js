@@ -1,5 +1,3 @@
-import React from 'react';
-import { Redirect } from 'react-router-dom';
 import api from '../config/axios';
 
 const adminLogin = data => {

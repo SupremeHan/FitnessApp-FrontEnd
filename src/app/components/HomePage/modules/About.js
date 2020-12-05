@@ -5,7 +5,10 @@ import Contact from './Contact';
 const useStyles = makeStyles((theme) => ({
     root: {
         justifyContent: "center",
-        marginBottom: '40px'
+        marginBottom: '40px',
+        [theme.breakpoints.down('sm')]: {
+            marginBottom: '0px'
+        }
     },
     aboutImg: {
         width:"100%",

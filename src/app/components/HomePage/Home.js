@@ -1,12 +1,11 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Typography, useMediaQuery } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import About from './modules/About';
 import Footer from './modules/Footer';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SideBarDrawer from '../AppBar/AppBar';
 import { Button } from '../../UI/Button/'
-import theme from '../../utils/theme';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -49,12 +48,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
     const classes = useStyles();
-    let history = useHistory();
-
-    function handleClick() {
-        console.log(1232)
-        history.push('/login')
-    }
 
     return (
         <div className={classes.root}>

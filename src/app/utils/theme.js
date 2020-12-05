@@ -100,7 +100,7 @@ export default {
               },
         },
         h2: {
-            fontFamily: FONT_FAMILY.secondary,
+            fontFamily: FONT_FAMILY.primary,
             fontWeight: 300,
             fontSize: 52,
             lineHeight: 1.55,

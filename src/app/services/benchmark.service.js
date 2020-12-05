@@ -9,7 +9,12 @@ const addBenchmark = (data) => {
     return api.post('api/benchmark', data);
 }
 
+const editBenchmark = (id, data) => {
+    return api.patch(`api/benchmark/${id}`, data);
+}
+
 export default {
     getBenchmark,
-    addBenchmark
+    addBenchmark,
+    editBenchmark
 }

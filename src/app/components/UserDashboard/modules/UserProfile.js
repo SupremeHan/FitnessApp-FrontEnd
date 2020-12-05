@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid, makeStyles, Button, Paper, TextField, InputAdornment} from '@material-ui/core';
+import { makeStyles, Button, Paper, TextField, InputAdornment} from '@material-ui/core';
 import { UserService } from '../../../services';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,11 +14,41 @@ const useStyles = makeStyles((theme) => ({
     profileInfo: {
         paddingLeft: '20px',
     },
+
     formBtn: {
         marginTop: '20px'
     },
     fontField: {
-        marginBottom: '20px'
+        marginBottom: '20px',
+    },
+    fontSize: {
+        fontSize: '1.65rem',
+        [theme.breakpoints.down('xs')]: {
+            fontSize: '1rem'
+        }
+    },
+    profileContent: {
+        display: 'flex',
+        justifyContent: 'center',
+    },
+    paperForm: {
+        padding: '20px',
+        display: 'flex',
+        [theme.breakpoints.down('sm')]: {
+            flexDirection: 'column'
+        }
+    },
+    profileImgWrapper: {
+        marginRight: '20px',
+         [theme.breakpoints.down('sm')]: {
+            display: 'flex',
+            justifyContent: 'center',
+            marginBottom: '20px'
+        }
+    },
+    profileImg: {
+        height: 'auto',
+        maxWidth: '350px'
     }
 }))
 
@@ -61,16 +91,15 @@ const UserProfile = () => {
 
   
     return (
-        <div>
-            <Grid container className={classes.content}>
-                <Grid item xs={12} sm={4}>
-                    <img 
-                        src={process.env.PUBLIC_URL + "/assets/profile.jpg"} 
-                        alt="slika"  
-                        className={classes.profileImg}
-                    />
-                </Grid>
-                <Grid item xs={12} sm={4} className={classes.profileInfo}>
+        <div className={classes.profileContent}>
+                    <Paper className={classes.paperForm}>
+                        <div className={classes.profileImgWrapper}>
+                             <img 
+                                 src={process.env.PUBLIC_URL + "/assets/profile.jpg"} 
+                                 alt="slika"  
+                                 className={classes.profileImg}
+                             />
+                        </div>
                         <form className={classes.form}>
                             <TextField
                               id="standard-multiline-flexible"
@@ -78,6 +107,11 @@ const UserProfile = () => {
                               label="Name"
                               value={user.name}
                               onChange={handleInputChange}
+                              InputProps={{
+                                classes: {
+                                  input: classes.fontSize,
+                                },
+                              }}
                               className={classes.fontField}
                             />
                             <TextField
@@ -86,6 +120,11 @@ const UserProfile = () => {
                               label="Last Name"
                               value={user.lastname}
                               onChange={handleInputChange}
+                              InputProps={{
+                                classes: {
+                                  input: classes.fontSize,
+                                },
+                              }}
                               className={classes.fontField}
                             />
                             <TextField
@@ -94,6 +133,11 @@ const UserProfile = () => {
                               label="Age"
                               value={user.age}
                               onChange={handleInputChange}
+                              InputProps={{
+                                classes: {
+                                  input: classes.fontSize,
+                                },
+                              }}
                               className={classes.fontField}
                             />
                             <TextField
@@ -105,6 +149,9 @@ const UserProfile = () => {
                               className={classes.fontField}
                               InputProps={{
                                 endAdornment: <InputAdornment position="end">Cm</InputAdornment>,
+                                classes: {
+                                  input: classes.fontSize,
+                                },
                                 }}
                             />
                             <TextField
@@ -116,6 +163,9 @@ const UserProfile = () => {
                               className={classes.fontField}
                               InputProps={{
                                 endAdornment: <InputAdornment position="end">Kg</InputAdornment>,
+                                classes: {
+                                  input: classes.fontSize,
+                                },
                                 }}
                             />
                       
@@ -128,8 +178,8 @@ const UserProfile = () => {
                             >Edit</Button>
                         </div>
                         </form>
-                </Grid>
-            </Grid>
+                    </Paper>
+             
             
            
         </div>
