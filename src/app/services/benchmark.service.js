@@ -13,8 +13,13 @@ const editBenchmark = (id, data) => {
     return api.patch(`api/benchmark/${id}`, data);
 }
 
+const deleteBenchmark = (id) => {
+    return api.delete(`api/benchmark/${id}`);
+}
+
 export default {
     getBenchmark,
     addBenchmark,
-    editBenchmark
+    editBenchmark,
+    deleteBenchmark
 }

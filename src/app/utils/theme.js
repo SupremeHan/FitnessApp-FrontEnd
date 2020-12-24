@@ -54,8 +54,10 @@ const PALETTE = {
         main: '#2FBFFF',
     },
     text: {
-        primary: '#191919',
-        secondary: '#eb5e28',
+        //primary: '#191919',
+        primary: '#333533',
+        secondary: '#ee6c4d',
+        //secondary: '#eb5e28',
         disabled: '#D8D8D8',
         hint: '#D8D8D8'
     },

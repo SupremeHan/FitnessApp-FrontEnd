@@ -11,8 +11,10 @@ export const theme = createMuiTheme(ThemeObject);
 const useStyles = makeStyles((theme) => ({
     '@global': {
         ...template(theme),
+    },
+    root: {
+        background: '#f5f3f4',
     }
-
 }), { name: 'App' });
 
 

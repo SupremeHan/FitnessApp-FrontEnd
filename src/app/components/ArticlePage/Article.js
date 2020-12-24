@@ -12,6 +12,9 @@ const useStyles = makeStyles(theme => ({
         justifyContent: 'center',
         margin: '50px 0px',
         alignItems: 'center',
+        [theme.breakpoints.down('xs')]: {
+            margin: '0px',
+        }
     },
     articleImg: {
         width:"100%",
@@ -20,7 +23,7 @@ const useStyles = makeStyles(theme => ({
     },
     info: {
         flexDirection: 'column',
-        margin: '50px 0px',
+        margin: '50px 10px',
         [theme.breakpoints.down('md')]: {
             margin: '50px 20px'
         }

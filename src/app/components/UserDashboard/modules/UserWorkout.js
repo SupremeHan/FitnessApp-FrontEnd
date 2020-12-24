@@ -65,7 +65,12 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: theme.shadows[5],
       padding: theme.spacing(2, 4, 3),
       display: 'flex',
-      flexDirection: 'column'
+      flexDirection: 'column',
+      [theme.breakpoints.down('xs')]: {
+        width: '300px'
+      },
+      width: '500px'
+      
     },
     btnAdd: {
         marginTop: '10px',
@@ -148,7 +153,6 @@ const UserWorkout = () => {
             timeCompleted: time,
             name: name
         }
-        console.log(z)
         benchmarkService.addBenchmark(z)
             .then(res => (console.log(res)))
             .catch(err => (console.log(err)))
@@ -197,7 +201,7 @@ const UserWorkout = () => {
                <Fade in={open}>
                 
                  <form onSubmit={handleTimeSubmit} className={classes.paper}>
-                     <Typography variant="h3">When you finish workout add your score here</Typography>
+                     <Typography variant="h4">When you finish workout add your score here</Typography>
                    
                     <TextField
                       label="Workout Name"
@@ -213,6 +217,7 @@ const UserWorkout = () => {
                         type="submit" 
                         className={classes.btnAdd}
                         variant="contained"
+                        onSubmit={handleClose}
                     >
                         Add score</Button>
                  </form>
@@ -322,7 +327,9 @@ const UserWorkout = () => {
                  :
                  <>
                     {training.map(item => (
-                      <div className={classes.items}>
+                    <div className={classes.itemWrapper}>
+                    <hr/>
+                     <div className={classes.items}>
                         
                         <Card className={classes.cards}>
                         <CardContent>
@@ -356,12 +363,17 @@ const UserWorkout = () => {
                             </Button>
                         </CardActions>
                     </Card>
+                        
+                        
+                        
                         <ReactPlayer
                             width="100%"
                             height="350px"
                             url={item.videoLink}
                             className={classes.video}
                         />
+
+                    </div>
                     </div>
                     ))}
                      </>

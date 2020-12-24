@@ -1,4 +1,4 @@
-import { Button, Card,  CardActions, CardContent, Fade, Grid, makeStyles, Modal, Typography } from '@material-ui/core';
+import { Button, Card,  CardActions, CardContent, Grid, makeStyles, Typography } from '@material-ui/core';
 import React, { useEffect, useState } from 'react';
 import benchmarkService from '../../../services/benchmark.service';
 
@@ -37,7 +37,6 @@ const UserStats = () => {
 
     const classes = useStyles();
     const [benchmark, setBenchmark] = useState([]);
-    const [open, setOpen] = React.useState(false);
 
 
     const getBenchmark = () => {
@@ -53,7 +52,7 @@ const UserStats = () => {
     }, []);
 
     const deleteBenchmark = (id) => {
-        console.log(id)
+        benchmarkService.deleteBenchmark(id);
         setBenchmark(benchmark.filter((item) => item.benchmarkId !== id))
     }
 
