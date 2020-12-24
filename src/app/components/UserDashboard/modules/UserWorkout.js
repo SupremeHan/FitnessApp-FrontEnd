@@ -7,6 +7,9 @@ import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 
 
 const useStyles = makeStyles((theme) => ({
+    root: {
+        height: "100%"
+    },
     workout: {
         justifyContent: 'center',
     },

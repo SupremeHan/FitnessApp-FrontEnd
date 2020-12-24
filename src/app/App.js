@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     },
     root: {
         background: '#f5f3f4',
+        backgroundRepeat: "repeat-y"
     }
 }), { name: 'App' });
 

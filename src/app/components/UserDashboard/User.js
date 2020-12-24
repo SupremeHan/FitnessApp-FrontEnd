@@ -43,7 +43,8 @@ function TabPanel(props) {
 const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
-        padding: '10px 20px'
+        padding: '10px 20px',
+        height: '100vh'
       },
     header: {
       display: 'flex',

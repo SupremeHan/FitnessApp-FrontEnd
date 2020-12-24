@@ -4,7 +4,7 @@ import { UserService } from '../../../services';
 
 const useStyles = makeStyles((theme) => ({
     content: {
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     form: {
         display: 'flex',
@@ -30,13 +30,14 @@ const useStyles = makeStyles((theme) => ({
     profileContent: {
         display: 'flex',
         justifyContent: 'center',
+        height: '100%'
     },
     paperForm: {
         padding: '20px',
         display: 'flex',
         [theme.breakpoints.down('sm')]: {
             flexDirection: 'column'
-        }
+        },
     },
     profileImgWrapper: {
         marginRight: '20px',
